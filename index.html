@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kiki or Bouba?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Is it more <span class="kiki-text">kiki</span> or more <span class="bouba-text">bouba</span>?</h1>
+    <p class="subtitle">
+      Vote on what words <em>feel</em> like. Sharp and spiky? That's kiki.
+      Soft and round? That's bouba.
+    </p>
+  </header>
+
+  <main>
+    <section class="submit-section">
+      <form id="submit-form">
+        <input
+          id="word-input"
+          type="text"
+          maxlength="40"
+          placeholder="Add a word to vote on…"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Add word</button>
+      </form>
+      <p id="submit-message" class="submit-message" aria-live="polite"></p>
+    </section>
+
+    <section class="board-section">
+      <div id="board" class="board" aria-live="polite">
+        <p class="loading">Loading words…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Votes are public and live. One vote per word per browser.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
