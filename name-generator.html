@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bouba Name Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-link" href="index.html">Language</a>
+    <a class="nav-link active" href="name-generator.html">Name Generator</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Is your name too <span class="kiki-text">kiki</span>?</h1>
+    <p class="subtitle">Get a new <span class="bouba-text">bouba</span> name!</p>
+  </header>
+
+  <main>
+    <section class="name-gen-section">
+      <form id="name-form" class="inline-form">
+        <input
+          id="name-input"
+          class="text-input"
+          type="text"
+          maxlength="40"
+          placeholder="Enter your name…"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="primary-btn">Bouba-fy me</button>
+      </form>
+
+      <div id="name-result" class="name-result" hidden>
+        <p>Your kiki name: <strong id="result-original"></strong></p>
+        <p class="name-result-arrow">becomes</p>
+        <p>Your bouba name: <strong id="result-generated"></strong></p>
+        <button id="regenerate-btn" type="button" class="secondary-btn">Try another</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Purely for fun — no names are stored or shared.</p>
+  </footer>
+
+  <script src="name-generator.js"></script>
+</body>
+</html>

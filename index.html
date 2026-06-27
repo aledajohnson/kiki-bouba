@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav class="site-nav">
+    <a class="nav-link active" href="index.html">Language</a>
+    <a class="nav-link" href="name-generator.html">Name Generator</a>
+  </nav>
+
   <header class="hero">
     <h1>The Grand Floof has requested we remove all <span class="kiki-text">kiki</span> words from our vocabulary.</h1>
     <p class="subtitle">
@@ -15,25 +20,26 @@
   </header>
 
   <main>
+    <section class="board-section">
+      <div id="board" class="board" aria-live="polite">
+        <p class="loading">Loading words…</p>
+      </div>
+    </section>
+
     <section class="submit-section">
-      <form id="submit-form">
+      <form id="submit-form" class="inline-form">
         <input
           id="word-input"
+          class="text-input"
           type="text"
           maxlength="40"
           placeholder="Add a word to vote on…"
           autocomplete="off"
           required
         />
-        <button type="submit">Add word</button>
+        <button type="submit" class="primary-btn">Add word</button>
       </form>
       <p id="submit-message" class="submit-message" aria-live="polite"></p>
-    </section>
-
-    <section class="board-section">
-      <div id="board" class="board" aria-live="polite">
-        <p class="loading">Loading words…</p>
-      </div>
     </section>
   </main>
 

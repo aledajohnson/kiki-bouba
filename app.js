@@ -90,11 +90,19 @@
     return card;
   }
 
+  const VOTE_ICONS = {
+    kiki:
+      '<svg class="vote-icon" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,4.0 56.5,34.3 82.5,17.5 65.7,43.5 96.0,50.0 65.7,56.5 82.5,82.5 56.5,65.7 50.0,96.0 43.5,65.7 17.5,82.5 34.3,56.5 4.0,50.0 34.3,43.5 17.5,17.5 43.5,34.3" fill="currentColor"/></svg>',
+    bouba: '<span class="vote-icon bouba-icon" aria-hidden="true"></span>',
+  };
+
   function buildVoteButton(word, voteType, count, votedType) {
     const btn = document.createElement("button");
     btn.className = `btn-${voteType}`;
     if (votedType) btn.disabled = true;
     if (votedType === voteType) btn.classList.add("voted");
+
+    btn.insertAdjacentHTML("beforeend", VOTE_ICONS[voteType]);
 
     const label = document.createElement("span");
     label.textContent = voteType === "kiki" ? "Kiki" : "Bouba";

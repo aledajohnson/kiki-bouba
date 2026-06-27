@@ -1,10 +1,10 @@
 :root {
-  --kiki: #ff3b5c;
-  --bouba: #6fa8ff;
+  --kiki: #ff5fa2;
+  --bouba: #5b4fd1;
   --bg: #eaf4ff;
-  --ink: #4a5a72;
-  --card: #ffffff;
-  --border: #dceaff;
+  --ink: #3a3658;
+  --card: rgba(255, 255, 255, 0.85);
+  --border: rgba(255, 255, 255, 0.6);
 }
 
 * {
@@ -15,45 +15,15 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
-  background: linear-gradient(180deg, #cfe7ff 0%, #eaf4ff 35%, #fdfeff 100%);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 55%, rgba(255, 250, 255, 0.92) 100%),
+    url("clouds-bg.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
-}
-
-body::before,
-body::after {
-  content: "☁️";
-  position: fixed;
-  font-size: 6rem;
-  opacity: 0.5;
-  filter: blur(0.5px);
-  z-index: -1;
-  animation: drift 60s linear infinite;
-  pointer-events: none;
-}
-
-body::before {
-  top: 8%;
-  left: -10%;
-}
-
-body::after {
-  top: 55%;
-  left: -15%;
-  font-size: 4rem;
-  animation-duration: 80s;
-  animation-delay: -20s;
-}
-
-@keyframes drift {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(130vw);
-  }
 }
 
 .hero {
@@ -62,9 +32,11 @@ body::after {
 }
 
 .hero h1 {
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
   margin: 0 0 0.5rem;
-  font-weight: 800;
+  font-weight: 700;
+  color: #46476b;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 2px 16px rgba(255, 255, 255, 0.5);
 }
 
 .kiki-text {
@@ -82,7 +54,50 @@ body::after {
 .subtitle {
   max-width: 36rem;
   margin: 0 auto;
-  color: #6b7a92;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  color: #46476b;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 2px 16px rgba(255, 255, 255, 0.5);
+}
+
+.site-nav {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 0.3rem;
+  box-shadow: 0 4px 14px rgba(124, 131, 253, 0.18);
+}
+
+.nav-link {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #46476b;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background: rgba(124, 131, 253, 0.12);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, var(--bouba), var(--kiki));
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .site-nav {
+    position: static;
+    width: fit-content;
+    margin: 0.75rem auto 0;
+  }
 }
 
 main {
@@ -95,39 +110,56 @@ main {
   margin-bottom: 2rem;
 }
 
-#submit-form {
+.inline-form {
   display: flex;
   gap: 0.5rem;
 }
 
-#word-input {
+.text-input {
   flex: 1;
   padding: 0.75rem 1rem;
   border: 2px solid var(--border);
   border-radius: 999px;
   font-size: 1rem;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-#word-input:focus {
+.text-input:focus {
   outline: none;
   border-color: var(--bouba);
 }
 
-#submit-form button {
+.primary-btn {
   padding: 0.75rem 1.25rem;
   border: none;
   border-radius: 999px;
-  background: var(--bouba);
+  background: linear-gradient(135deg, var(--bouba), var(--kiki));
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(111, 168, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(124, 131, 253, 0.4);
 }
 
-#submit-form button:hover {
+.primary-btn:hover {
   opacity: 0.85;
+}
+
+.secondary-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid var(--bouba);
+  background: transparent;
+  color: var(--bouba);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: color-mix(in srgb, var(--bouba) 12%, white);
 }
 
 .submit-message {
@@ -150,10 +182,11 @@ main {
 
 .word-card {
   background: var(--card);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 1.75rem;
   padding: 1.25rem 1.5rem;
-  box-shadow: 0 8px 20px rgba(111, 168, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(124, 131, 253, 0.18), 0 2px 8px rgba(255, 95, 162, 0.12);
 }
 
 .word-card h2 {
@@ -197,6 +230,25 @@ main {
   line-height: 1.3;
 }
 
+.vote-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.bouba-icon {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("bouba-blob.png");
+  mask-image: url("bouba-blob.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
 .vote-buttons button span.count {
   font-weight: 400;
   font-size: 0.85rem;
@@ -230,4 +282,36 @@ footer {
   color: #999;
   font-size: 0.85rem;
   padding-bottom: 2rem;
+}
+
+.name-gen-section {
+  max-width: 28rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.name-result {
+  margin-top: 1.5rem;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(124, 131, 253, 0.18), 0 2px 8px rgba(255, 95, 162, 0.12);
+}
+
+.name-result p {
+  margin: 0.3rem 0;
+}
+
+.name-result-arrow {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+#result-generated {
+  color: var(--bouba);
+  font-size: 1.4rem;
 }
