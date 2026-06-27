@@ -64,5 +64,6 @@ alter publication supabase_realtime add table words;
 
 -- A few starter words so the board isn't empty.
 insert into words (text) values
-  ('maluma'), ('takete'), ('bouba'), ('kiki')
+  ('pixel'), ('velvet'), ('zebra'), ('pogo'), ('quartz'),
+  ('bamboo'), ('cosmo'), ('tulip'), ('gasket'), ('spore')
 on conflict (normalized_text) do nothing;

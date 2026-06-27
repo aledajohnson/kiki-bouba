@@ -1,10 +1,10 @@
 :root {
   --kiki: #ff3b5c;
-  --bouba: #2a6df4;
-  --bg: #fafafa;
-  --ink: #1a1a1a;
+  --bouba: #6fa8ff;
+  --bg: #eaf4ff;
+  --ink: #4a5a72;
   --card: #ffffff;
-  --border: #e3e3e3;
+  --border: #dceaff;
 }
 
 * {
@@ -14,8 +14,46 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
   color: var(--ink);
+  background: linear-gradient(180deg, #cfe7ff 0%, #eaf4ff 35%, #fdfeff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "☁️";
+  position: fixed;
+  font-size: 6rem;
+  opacity: 0.5;
+  filter: blur(0.5px);
+  z-index: -1;
+  animation: drift 60s linear infinite;
+  pointer-events: none;
+}
+
+body::before {
+  top: 8%;
+  left: -10%;
+}
+
+body::after {
+  top: 55%;
+  left: -15%;
+  font-size: 4rem;
+  animation-duration: 80s;
+  animation-delay: -20s;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(130vw);
+  }
 }
 
 .hero {
@@ -26,6 +64,7 @@ body {
 .hero h1 {
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   margin: 0 0 0.5rem;
+  font-weight: 800;
 }
 
 .kiki-text {
@@ -43,7 +82,7 @@ body {
 .subtitle {
   max-width: 36rem;
   margin: 0 auto;
-  color: #555;
+  color: #6b7a92;
 }
 
 main {
@@ -67,21 +106,24 @@ main {
   border: 2px solid var(--border);
   border-radius: 999px;
   font-size: 1rem;
+  background: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 #word-input:focus {
   outline: none;
-  border-color: var(--ink);
+  border-color: var(--bouba);
 }
 
 #submit-form button {
   padding: 0.75rem 1.25rem;
   border: none;
   border-radius: 999px;
-  background: var(--ink);
+  background: var(--bouba);
   color: white;
   font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(111, 168, 255, 0.4);
 }
 
 #submit-form button:hover {
@@ -109,8 +151,9 @@ main {
 .word-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 1.25rem;
+  border-radius: 1.75rem;
   padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(111, 168, 255, 0.15);
 }
 
 .word-card h2 {
