@@ -32,10 +32,10 @@ npx serve .
 ## 4. Deploy to GitHub Pages
 
 1. Push this folder to a GitHub repo (as the repo root).
-2. In the repo, go to **Settings > Pages** and set **Source** to **GitHub Actions**.
-3. Push to `main` — the workflow at [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) builds and deploys automatically. Check the **Actions** tab for progress and the deployed URL.
+2. In the repo, go to **Settings > Pages**, set **Source** to **Deploy from a branch**, and pick branch `main`, folder `/ (root)`.
+3. GitHub builds and serves the site at `https://<username>.github.io/<repo>/`. Check the **Actions** tab (Pages uses a built-in `pages-build-deployment` workflow) for progress.
 
-Every subsequent push to `main` redeploys automatically. No environment variables needed since the Supabase anon key is meant to ship in the client bundle — just make sure `config.js` has your real values committed before pushing.
+Every subsequent push to `main` redeploys automatically — no workflow file needed since this is a plain static site with no build step. No environment variables needed either, since the Supabase anon key is meant to ship in the client bundle — just make sure `config.js` has your real values committed before pushing.
 
 ## How voting works
 
