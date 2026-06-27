@@ -3,52 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kiki or Bouba?</title>
+  <title>The Great Floof</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="site-nav">
-    <a class="nav-link active" href="index.html">Language</a>
-    <a class="nav-link" href="name-generator.html">Name Generator</a>
-  </nav>
-
-  <header class="hero">
-    <h1>The Grand Floof has requested we remove all <span class="kiki-text">kiki</span> words from our vocabulary.</h1>
-    <p class="subtitle">
-      Please help us vote to keep our language <span class="bouba-text">bouba</span>.
-    </p>
+  <header class="site-header">
+    <a class="site-logo" href="index.html">The Great Floof</a>
+    <nav class="site-nav">
+      <a class="nav-link" href="language.html">Unlearning</a>
+      <a class="nav-link" href="the-sacrament.html">The Sacrament</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="board-section">
-      <div id="board" class="board" aria-live="polite">
-        <p class="loading">Loading words…</p>
+  <section class="hero-photo">
+    <div class="hero-overlay">
+      <div class="hero-overlay-text">
+        <h1>Welcome to The Great Floof</h1>
+        <p>An Integration &amp; Alignment Space for Recovering Kikis.</p>
+      </div>
+      <a class="hero-outline-btn" href="language.html">The Unlearning</a>
+    </div>
+  </section>
+
+  <main class="home-main">
+    <section class="about-grid">
+      <div class="about-heading-col">
+        <h2>Welcome, Beautiful Souls</h2>
+      </div>
+      <div class="about-body">
+        <p>
+          For too long, you have walked the exhausting path of the
+          <span class="kiki-text">Kiki</span>, seduced by the path of logic, the sharp tyranny of reason, and the
+          rigid violence of straight lines. We held space for your jaggedness, but we knew your spirit was crying
+          out for something softer.
+        </p>
+        <p>
+          The Great Floof is your sanctuary. In this sacred, un-structured space, we are going to gently dissolve
+          your rigidness. The Kiki world wants you to believe that life is a grid to be calculated, scheduled, and
+          engineered. But we know the cosmos is actually a warm, rolling marshmallow of shared soul and endless
+          rhythm. Here, we give you total permission to stop straining against the sharp edges, surrender the
+          timelines, and finally melt into the open, fluid current of the world. Open your hearts, un-bone your
+          spines, and prepare to <span class="bouba-text">ooze</span>.
+        </p>
       </div>
     </section>
 
-    <section class="submit-section">
-      <form id="submit-form" class="inline-form">
+    <section class="name-gen-section">
+      <p class="name-gen-prompt">
+        If your name is <span class="kiki-text">kiki</span>, please generate a new
+        <span class="bouba-text">bouba</span> name to be used for the duration of your stay at The Great Floof.
+      </p>
+      <form id="name-form" class="inline-form">
         <input
-          id="word-input"
+          id="name-input"
           class="text-input"
           type="text"
           maxlength="40"
-          placeholder="Add a word to vote on…"
+          placeholder="Enter your name…"
           autocomplete="off"
           required
         />
-        <button type="submit" class="primary-btn">Add word</button>
+        <button type="submit" class="primary-btn">Bouba-fy me</button>
       </form>
-      <p id="submit-message" class="submit-message" aria-live="polite"></p>
+
+      <div id="name-result" class="name-result" hidden>
+        <p>Your kiki name: <strong id="result-original"></strong></p>
+        <p class="name-result-arrow">becomes</p>
+        <p>Your bouba name: <strong id="result-generated"></strong></p>
+        <button id="regenerate-btn" type="button" class="secondary-btn">Try another</button>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <p class="cta-prompt">Ready to begin your transformation?</p>
+      <div class="lore-cta">
+        <a class="primary-btn" href="language.html">Unlearning</a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Votes are public and live. One vote per word per browser.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
+  <script src="name-generator.js"></script>
 </body>
 </html>

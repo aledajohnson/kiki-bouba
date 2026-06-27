@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Unlearning — The Great Floof</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-logo" href="index.html">The Great Floof</a>
+    <nav class="site-nav">
+      <a class="nav-link active" href="language.html">Unlearning</a>
+      <a class="nav-link" href="the-sacrament.html">The Sacrament</a>
+    </nav>
+  </header>
+
+  <section class="hero-photo">
+    <div class="hero-overlay">
+      <div class="hero-overlay-text">
+        <h1>The Unlearning</h1>
+        <p>Three gentle practices for dissolving your jaggedness.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="home-main">
+    <section class="about-grid">
+      <div class="about-heading-col">
+        <h2>1. Cognitive Re-Softening</h2>
+      </div>
+      <div class="about-body">
+        <p>
+          We invite our seekers to step away from the violent act of "knowing." Logic is simply the mind trying
+          to build an armor of sharp corners. Through gentle cognitive re-softening, we learn to exile hard
+          facts, replacing them with "soft possibilities" and "pillowy intuitions." Sometimes we don't need to
+          analyze the river; just simply enjoy swimming in it.
+        </p>
+        <p>To begin your cognitive resoftening, please visit the massage area.</p>
+      </div>
+    </section>
+
+    <section class="about-grid">
+      <div class="about-heading-col">
+        <h2>2. Boundary Dissolution</h2>
+      </div>
+      <div class="about-body">
+        <p>
+          The words "I" and "Me" are incredibly pointy. They create a sharp fence between your ego and the
+          cosmos. In our advanced integration circles, we gently unlearn individual containment. We replace
+          isolating words with fluid, collective containers. You are no longer an individual navigating a
+          schedule; you are a localized ripple in the communal pool of jelly.
+        </p>
+        <p>To start your boundary dissolution, visit the cuddle puddle space at our retreat center.</p>
+      </div>
+    </section>
+
+    <section class="about-grid">
+      <div class="about-heading-col">
+        <h2>3. Somatic Sound Cleansing</h2>
+      </div>
+      <div class="about-body">
+        <p>
+          Every time you pronounce a hard, explosive consonant like a T or a K, your nervous system experiences
+          a micro-trauma of friction. Our linguistic detox program helps you unlearn the aggressive syntax of
+          your past. By exiling these jagged, toxic phonemes from your internal narrative, you allow your vocal
+          cords to return to their natural, ancestral state of constant, low-frequency humming.
+        </p>
+        <p>During the retreat, try using alternative, soft language. Here are some examples.</p>
+        <ul class="soft-examples">
+          <li>Hubappuby Bubirthdubay Ubash uband Kubelluby</li>
+          <li>Wubee lubovubee oubour frubiendubs</li>
+          <li>Lubovubee ubis Buboububa, lubong lubivubee Buboububa</li>
+        </ul>
+        <p>
+          We recognize it's hard to learn a new language instantly, so you can start by just auditing your
+          current vocabulary below.
+        </p>
+      </div>
+    </section>
+
+    <div class="voting-area">
+      <section class="board-section">
+        <div id="board" class="board" aria-live="polite">
+          <p class="loading">Loading words…</p>
+        </div>
+      </section>
+
+      <section class="submit-section">
+        <form id="submit-form" class="inline-form">
+          <input
+            id="word-input"
+            class="text-input"
+            type="text"
+            maxlength="40"
+            placeholder="Add a word to vote on…"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="primary-btn">Add word</button>
+        </form>
+        <p id="submit-message" class="submit-message" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Votes are public and live. One vote per word per browser.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

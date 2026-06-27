@@ -15,13 +15,16 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
+  background-color: #cfd6f5;
   background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 55%, rgba(255, 250, 255, 0.92) 100%),
-    url("clouds-bg.png");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
+    radial-gradient(circle at 12% 18%, rgba(255, 150, 220, 0.55), transparent 45%),
+    radial-gradient(circle at 85% 12%, rgba(140, 210, 255, 0.55), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(190, 160, 255, 0.5), transparent 45%),
+    radial-gradient(circle at 15% 80%, rgba(170, 255, 225, 0.45), transparent 45%),
+    radial-gradient(circle at 50% 45%, rgba(255, 220, 180, 0.35), transparent 50%),
+    linear-gradient(160deg, #c9d4f7 0%, #e6d3f4 40%, #ffe1ec 70%, #d4f0ff 100%);
   background-attachment: fixed;
+  background-size: cover;
   min-height: 100vh;
   position: relative;
 }
@@ -60,43 +63,59 @@ body {
   text-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 2px 16px rgba(255, 255, 255, 0.5);
 }
 
-.site-nav {
-  position: fixed;
-  top: 1rem;
-  right: 1.25rem;
-  z-index: 10;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
-  gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(8px);
-  border-radius: 999px;
-  padding: 0.3rem;
-  box-shadow: 0 4px 14px rgba(124, 131, 253, 0.18);
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(124, 131, 253, 0.14);
 }
 
-.nav-link {
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
+.site-logo {
+  font-weight: 800;
+  font-size: 1.05rem;
   color: #46476b;
   text-decoration: none;
 }
 
+.site-nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #46476b;
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+
 .nav-link:hover {
-  background: rgba(124, 131, 253, 0.12);
+  color: var(--bouba);
 }
 
 .nav-link.active {
-  background: linear-gradient(135deg, var(--bouba), var(--kiki));
-  color: white;
+  color: var(--bouba);
+  border-bottom-color: var(--bouba);
 }
 
 @media (max-width: 480px) {
+  .site-header {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.9rem 1.25rem;
+  }
+
   .site-nav {
-    position: static;
-    width: fit-content;
-    margin: 0.75rem auto 0;
+    gap: 1.1rem;
   }
 }
 
@@ -106,8 +125,13 @@ main {
   padding: 0 1.5rem 3rem;
 }
 
+main.home-main {
+  max-width: none;
+  padding: 0;
+}
+
 .submit-section {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .inline-form {
@@ -132,12 +156,15 @@ main {
 }
 
 .primary-btn {
+  display: inline-block;
   padding: 0.75rem 1.25rem;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--bouba), var(--kiki));
   color: white;
   font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(124, 131, 253, 0.4);
 }
@@ -147,6 +174,7 @@ main {
 }
 
 .secondary-btn {
+  display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1.1rem;
   border-radius: 999px;
@@ -155,6 +183,7 @@ main {
   color: var(--bouba);
   font-weight: 600;
   font-size: 0.9rem;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -182,11 +211,12 @@ main {
 
 .word-card {
   background: var(--card);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid var(--border);
   border-radius: 1.75rem;
   padding: 1.25rem 1.5rem;
-  box-shadow: 0 8px 24px rgba(124, 131, 253, 0.18), 0 2px 8px rgba(255, 95, 162, 0.12);
+  box-shadow: 0 8px 32px rgba(124, 131, 253, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .word-card h2 {
@@ -284,10 +314,175 @@ footer {
   padding-bottom: 2rem;
 }
 
+.hero-photo {
+  position: relative;
+  height: 64vh;
+  min-height: 380px;
+  background-image: url("hero-clouds.jpg");
+  background-size: cover;
+  background-position: center 55%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-photo--sacrament {
+  background-image: url("sacrament-hero.jpg");
+}
+
+.hero-overlay {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(180deg, rgba(30, 28, 54, 0) 0%, rgba(30, 28, 54, 0.45) 55%, rgba(30, 28, 54, 0.8) 100%);
+}
+
+.hero-overlay-text h1 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.hero-overlay-text p {
+  margin: 0;
+  max-width: 30rem;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: #f0eefb;
+}
+
+.hero-outline-btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hero-outline-btn:hover {
+  background: #ffffff;
+  color: #2c2a48;
+}
+
+.about-grid {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-heading-col h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #2c2a48;
+}
+
+.about-body p {
+  margin: 0 0 1.1rem;
+  line-height: 1.75;
+  color: #3a3658;
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cta-section {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  text-align: center;
+}
+
+.soft-examples {
+  margin: 0 0 1.1rem;
+  padding: 1rem 1.25rem;
+  list-style: none;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  font-style: italic;
+  color: var(--bouba);
+}
+
+.soft-examples li {
+  margin: 0.3rem 0;
+}
+
+.voting-area {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.copy-block {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 1rem;
+  line-height: 1.75;
+  color: #3a3658;
+}
+
+.sacrament-figure {
+  max-width: 38rem;
+  margin: 1.5rem auto 4rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.sacrament-figure img {
+  width: 100%;
+  border-radius: 1.75rem;
+  box-shadow: 0 8px 32px rgba(124, 131, 253, 0.22);
+}
+
+.sacrament-figure figcaption {
+  margin-top: 0.75rem;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.cta-prompt {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #46476b;
+}
+
+.lore-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 .name-gen-section {
   max-width: 28rem;
   margin: 0 auto;
+  padding: 0 2rem 2rem;
   text-align: center;
+}
+
+.name-gen-prompt {
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+  color: #3a3658;
 }
 
 .name-result {
